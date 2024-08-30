@@ -1,7 +1,11 @@
+// * import libraries
 import React from "react";
 import {Link} from "expo-router";
 import {StatusBar} from 'expo-status-bar';
 import {Image, Pressable, StyleSheet, Text, SafeAreaView, ScrollView, View} from 'react-native';
+
+// * import components
+import CrossBack from '../../components/crossBack';
 
 const Spacer = ({ size }) => <View style={{ height: size }} />;
 
@@ -9,11 +13,7 @@ export default function Menu() {
     return (
         <SafeAreaView style={styles.container}>
             <StatusBar style="auto"/>
-            <Link href="/" asChild style={styles.cross}>
-                <Pressable style={styles.cross}>
-                    <Image source={require('../../../assets/img/icones/crossBack.png')} style={styles.imageCross} resizeMode={"contain"}/>
-                </Pressable>
-            </Link>
+            <CrossBack/>
             <ScrollView showsVerticalScrollIndicator={false} style={styles.scrollView}>
                 <View style={styles.items}>
                     <Link href="/pages/menu/backgrounds" asChild style={styles.button}>
@@ -89,18 +89,6 @@ const styles = StyleSheet.create({
     scrollView: {
         height: '100%',
         width: '100%',
-    },
-    cross: {
-        position: 'absolute',
-        top: 15,
-        right: 15,
-        width: 50,
-        height: 50,
-        zIndex: 1
-    },
-    imageCross: {
-        width: '100%',
-        height: '100%'
     },
     items: {
         marginTop: '20%',

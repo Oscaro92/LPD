@@ -1,17 +1,15 @@
+// * import libraries
 import {StatusBar} from 'expo-status-bar';
-import {Image, Pressable, StyleSheet, Text, View} from 'react-native';
-import React from "react";
-import {Link} from "expo-router";
+import {Image, StyleSheet, Text, View} from 'react-native';
+
+// * import components
+import CrossBack from '../../components/crossBack'
 
 export default function Concept() {
     return (
         <View style={styles.container}>
             <StatusBar style="auto"/>
-            <Link href="/" asChild style={styles.cross}>
-                <Pressable style={styles.cross}>
-                    <Image source={require('../../../assets/img/icones/crossBack.png')} style={styles.imageCross} resizeMode={"contain"}/>
-                </Pressable>
-            </Link>
+            <CrossBack/>
             <View style={styles.items}>
                 <Image source={require("../../../assets/img/concept/main.png")} style={styles.image} resizeMode={"contain"}/>
                 <Text style={styles.text}>La Patate Douce radio est un mélange de saveurs groovy et smoothy, une autoroute du soleil direction ta mer ef purée que c'est bon !</Text>

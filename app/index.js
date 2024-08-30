@@ -1,3 +1,4 @@
+// * import libraries
 import {Audio} from 'expo-av';
 import { Link } from 'expo-router';
 import Lottie from 'lottie-react-native';

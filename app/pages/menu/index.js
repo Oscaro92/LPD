@@ -1,53 +1,80 @@
+import React from "react";
 import {Link} from "expo-router";
 import {StatusBar} from 'expo-status-bar';
-import {Image, Pressable, StyleSheet, Text, SafeAreaView, View} from 'react-native';
+import {Image, Pressable, StyleSheet, Text, SafeAreaView, ScrollView, View} from 'react-native';
+
+const Spacer = ({ size }) => <View style={{ height: size }} />;
 
 export default function Menu() {
     return (
         <SafeAreaView style={styles.container}>
             <StatusBar style="auto"/>
-            <Text style={{position: 'absolute', top: 5, right: 5}}>Coucou</Text>
-            <Link href="/pages/menu/backgrounds" asChild style={styles.button}>
-                <Pressable style={styles.button}>
-                    <Image source={require('../../../assets/menu/backgrounds.png')} style={styles.image}/>
+            <Link href="/" asChild style={styles.cross}>
+                <Pressable style={styles.cross}>
+                    <Image source={require('../../../assets/img/icones/crossBack.png')} style={styles.imageCross} resizeMode={"contain"}/>
                 </Pressable>
             </Link>
-{/*            <Link href="/pages/menu/jingles" asChild>
-                <Pressable style={styles.button}>
-                    <Image source={require('../../../assets/menu/jingles.png')} style={styles.image}/>
-                </Pressable>
-            </Link>
-            <Link href="/pages/menu/concept" asChild>
-                <Pressable style={styles.button}>
-                    <Image source={require('../../../assets/menu/backgrounds.png')} style={styles.image}/>
-                </Pressable>
-            </Link>
-            <Link href="/pages/menu/selections" asChild>
-                <Pressable style={styles.button}>
-                    <Image source={require('../../../assets/menu/backgrounds.png')} style={styles.image}/>
-                </Pressable>
-            </Link>
-            <View style={styles.twoButton}>
-                <Link href="/pages/menu/playlists" asChild>
-                    <Pressable style={styles.halfImage}>
-                        <Image source={require('../../../assets/menu/backgrounds.png')} style={styles.image}/>
+            <ScrollView showsVerticalScrollIndicator={false} style={styles.scrollView}>
+                <View style={styles.items}>
+                    <Link href="/pages/menu/backgrounds" asChild style={styles.button}>
+                        <Pressable style={styles.button}>
+                            <Image source={require('../../../assets/img/menu/backgrounds.png')} style={styles.image} resizeMode={"contain"}/>
+                        </Pressable>
+                    </Link>
+                    <Spacer size={10}/>
+                    <Link href="/pages/menu/jingles" asChild style={styles.button}>
+                        <Pressable style={styles.button}>
+                            <Image source={require('../../../assets/img/menu/jingles.png')} style={styles.image} resizeMode={"contain"} />
+                        </Pressable>
+                    </Link>
+                    <Spacer size={10}/>
+                    <Link href="/pages/menu/concept" asChild style={styles.button}>
+                        <Pressable style={styles.button}>
+                            <Image source={require('../../../assets/img/menu/concept.png')} style={styles.image} resizeMode={"contain"}/>
+                        </Pressable>
+                    </Link>
+                    <Spacer size={10}/>
+                    <View style={styles.twoButton}>
+                        <Link href="/pages/menu/selections" asChild style={styles.halfImage}>
+                            <Pressable style={styles.halfImage}>
+                                <Image source={require('../../../assets/img/menu/selections.png')} style={styles.image} resizeMode={"contain"}/>
+                            </Pressable>
+                        </Link>
+                        <Link href="/pages/menu/playlists" asChild style={styles.halfImage}>
+                            <Pressable style={styles.halfImage}>
+                                <Image source={require('../../../assets/img/menu/playlists.png')} style={styles.image} resizeMode={"contain"}/>
+                            </Pressable>
+                        </Link>
+                    </View>
+                    <Spacer size={10}/>
+                    <Link href="/pages/menu/shop" asChild style={styles.halfImage}>
+                        <Pressable style={styles.button}>
+                            <Image source={require('../../../assets/img/menu/backgrounds.png')} style={styles.image} resizeMode={"contain"}/>
+                        </Pressable>
+                    </Link>
+                    <Spacer size={10}/>
+                    <Link href="/pages/menu/soutenir" asChild style={styles.halfImage}>
+                        <Pressable style={styles.button}>
+                            <Image source={require('../../../assets/img/menu/soutenir.png')} style={styles.image} resizeMode={"contain"}/>
+                        </Pressable>
+                    </Link>
+                    <Spacer size={10}/>
+                    <View style={styles.twoButton}>
+                        <Pressable style={styles.halfImage}>
+                            <Image source={require('../../../assets/img/menu/rating.png')} style={styles.image} resizeMode={"contain"}/>
+                        </Pressable>
+                        <Pressable style={styles.halfImage}>
+                            <Image source={require('../../../assets/img/menu/instagram.png')} style={styles.image} resizeMode={"contain"}/>
+                        </Pressable>
+                    </View>
+                    <Spacer size={10}/>
+                    <Text style={styles.footer}>Made with 🍠</Text>
+                    <Pressable>
+                        <Text style={[styles.footer, {textDecorationLine: 'underline'}]}>by Le Studio Pigalle</Text>
                     </Pressable>
-                </Link>
-                <Link href="/pages/menu/shop" asChild>
-                    <Pressable style={styles.halfImage}>
-                        <Image source={require('../../../assets/menu/backgrounds.png')} style={styles.image}/>
-                    </Pressable>
-                </Link>
-            </View>
-            <Link href="/pages/menu/soutenir" asChild>
-                <Pressable style={styles.button}>
-                    <Image source={require('../../../assets/menu/backgrounds.png')} style={styles.image}/>
-                </Pressable>
-            </Link>
-            <View>
-                <Text>rating</Text>
-                <Text>instagram</Text>
-            </View>*/}
+                    <Spacer size={10}/>
+                </View>
+            </ScrollView>
         </SafeAreaView>
     );
 }
@@ -55,28 +82,54 @@ export default function Menu() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#481121',
+        backgroundColor: '#520D2F',
         alignItems: 'center',
-        justifyContent: 'flex-start',
+        width: "100%",
+    },
+    scrollView: {
+        height: '100%',
+        width: '100%',
+    },
+    cross: {
+        position: 'absolute',
+        top: 15,
+        right: 15,
+        width: 50,
+        height: 50,
+        zIndex: 1
+    },
+    imageCross: {
+        width: '100%',
+        height: '100%'
+    },
+    items: {
+        marginTop: '20%',
+        width: '100%',
         flexDirection: 'column',
-        display: 'flex'
+        alignItems: 'center'
     },
     button: {
-        position: 'relative',
-        width: '80%',
-        height: 140
+        width: '90%',
+        height: 130
     },
     twoButton: {
-        width: '80%',
-        height: 140,
-        alignSelf: 'center',
+        flexDirection: 'row',
+        alignItems: 'center',
         justifyContent: 'space-between',
+        width: '90%',
+        height: 130
     },
     image: {
         width: '100%',
-        resizeMode: 'contain'
+        height: 130
     },
     halfImage: {
         width: '50%',
+    },
+    footer: {
+        color: '#F4ECC4',
+        // fontFamily: 'Futura-Bold', // ! add font
+        fontWeight: "700",
+        fontSize: 14
     }
 });

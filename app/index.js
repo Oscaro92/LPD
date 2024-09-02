@@ -95,7 +95,7 @@ export default function App() {
         <View style={styles.container}>
             <StatusBar style="auto"/>
             <Lottie resizeMode="contain" source={require('../assets/animation.json')} autoPlay loop style={[styles.lottie, {display: animation}]}/>
-            <ImageBackground source={pathBG} resizeMode="cover" style={styles.bg}>
+Upda            <ImageBackground source={pathBG} resizeMode="cover" style={styles.bg}/>
             <View style={styles.topBox}>
                 {animedLogo > 15 ? (
                     <Animated.Image
@@ -124,7 +124,6 @@ export default function App() {
                 ): (
                     <Button title="Play Sound" onPress={playSound}/>
                 )}*/}
-            </ImageBackground>
         </View>
     );
 }

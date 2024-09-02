@@ -12,9 +12,9 @@ export default function Concept() {
             <CrossBack/>
             <View style={styles.items}>
                 <Image source={require("../../../assets/img/concept/main.png")} style={styles.image} resizeMode={"contain"}/>
-                <Text style={styles.text}>La Patate Douce radio est un mélange de saveurs groovy et smoothy, une autoroute du soleil direction ta mer ef purée que c'est bon !</Text>
-                <Text style={styles.text}>Ce légume 4 saisons t'apporte de la douceur tout en donnant la pêche. Un assortiment Disco-Funk saupoudré de Bossa Nova, de Jazz accompagné par sa dose d'Electro et de musiques afro.</Text>
-                <Text style={styles.text}>Ici aucune Pub, uniquement du partage. Une bibliothèque constamment alimentée de nouveautés pour un plein de Vitamines C.</Text>
+                <Text style={styles.text}>&emsp;&emsp;La Patate Douce radio est un mélange de saveurs groovy et smoothy, une autoroute du soleil direction ta mer ef purée que c'est bon !</Text>
+                <Text style={styles.text}>&emsp;&emsp;Ce légume 4 saisons t'apporte de la douceur tout en donnant la pêche. Un assortiment Disco-Funk saupoudré de Bossa Nova, de Jazz accompagné par sa dose d'Electro et de musiques afro.</Text>
+                <Text style={styles.text}>&emsp;&emsp;Ici aucune Pub, uniquement du partage. Une bibliothèque constamment alimentée de nouveautés pour un plein de Vitamines C.</Text>
                 <Text style={styles.text}>Cette radio reste avant tout le projet d'un passionné dont le but est simple:</Text>
                 <Text style={[styles.text, {fontSize: 18, fontWeight: "900", alignSelf: 'center'}]}>DONNER LA PATATE (DOUCE)</Text>
             </View>
@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
     },
     text: {
         color: '#F4ECC4',
-        // fontFamily: 'Futura-Bold', // ! add font
+        //fontFamily: 'Futura-Bold', // ! add font
         fontWeight: "700",
         fontSize: 14
     }

@@ -2,7 +2,7 @@
 import React from "react";
 import {Link} from "expo-router";
 import {StatusBar} from 'expo-status-bar';
-import {Image, Pressable, StyleSheet, Text, SafeAreaView, ScrollView, View} from 'react-native';
+import {Image, Pressable, StyleSheet, Text, ScrollView, View} from 'react-native';
 
 // * import components
 import CrossBack from '../../components/crossBack';
@@ -11,7 +11,7 @@ const Spacer = ({ size }) => <View style={{ height: size }} />;
 
 export default function Menu() {
     return (
-        <SafeAreaView style={styles.container}>
+        <View style={styles.container}>
             <StatusBar style="auto"/>
             <CrossBack/>
             <ScrollView showsVerticalScrollIndicator={false} style={styles.scrollView}>
@@ -75,7 +75,7 @@ export default function Menu() {
                     <Spacer size={10}/>
                 </View>
             </ScrollView>
-        </SafeAreaView>
+        </View>
     );
 }
 

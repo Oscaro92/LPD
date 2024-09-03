@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
     button: {
         width: "auto",
         height: "auto",
-        borderWidth: 5,
+        borderWidth: 3,
         borderColor: '#F4ECC4',
         backgroundColor: '#FFD226',
         alignItems: 'center',

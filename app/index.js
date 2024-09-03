@@ -85,6 +85,7 @@ export default function App() {
             useNativeDriver: true,
         })
     ).start();
+
     // Create the interpolated rotation string
     const rotate = rotateValue.interpolate({
         inputRange: [0, 1],

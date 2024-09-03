@@ -21,7 +21,7 @@ export default function Menu() {
             } else {
                 await WebBrowser.openBrowserAsync('https://play.google.com/store/apps/details?id=la.patate.douce');
             }
-        } else if ("insta") {
+        } else if (value === 'insta') {
             await WebBrowser.openBrowserAsync('instagram://media');
         } else if (value === 'studio') {
             await WebBrowser.openBrowserAsync('https://pigallestud.io');

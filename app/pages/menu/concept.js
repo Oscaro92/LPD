@@ -15,7 +15,7 @@ export default function Concept() {
                 <Text style={styles.text}>&emsp;&emsp;La Patate Douce radio est un mélange de saveurs groovy et smoothy, une autoroute du soleil direction ta mer ef purée que c'est bon !</Text>
                 <Text style={styles.text}>&emsp;&emsp;Ce légume 4 saisons t'apporte de la douceur tout en donnant la pêche. Un assortiment Disco-Funk saupoudré de Bossa Nova, de Jazz accompagné par sa dose d'Electro et de musiques afro.</Text>
                 <Text style={styles.text}>&emsp;&emsp;Ici aucune Pub, uniquement du partage. Une bibliothèque constamment alimentée de nouveautés pour un plein de Vitamines C.</Text>
-                <Text style={styles.text}>Cette radio reste avant tout le projet d'un passionné dont le but est simple:</Text>
+                <Text style={styles.text}>&emsp;&emsp;Cette radio reste avant tout le projet d'un passionné dont le but est simple:</Text>
                 <Text style={[styles.text, {fontSize: 18, fontWeight: "900", alignSelf: 'center'}]}>DONNER LA PATATE (DOUCE)</Text>
             </View>
         </View>

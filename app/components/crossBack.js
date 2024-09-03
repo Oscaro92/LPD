@@ -17,8 +17,8 @@ const styles = StyleSheet.create({
         position: 'absolute',
         top: 15,
         right: 15,
-        width: 50,
-        height: 50,
+        width: 40,
+        height: 40,
         zIndex: 1
     },
     imageCross: {

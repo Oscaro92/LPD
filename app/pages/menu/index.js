@@ -1,7 +1,9 @@
 // * import libraries
 import React from "react";
 import {Link} from "expo-router";
+import * as Device from 'expo-device';
 import {StatusBar} from 'expo-status-bar';
+import * as WebBrowser from 'expo-web-browser';
 import {Image, Pressable, StyleSheet, Text, ScrollView, View} from 'react-native';
 
 // * import components
@@ -10,6 +12,22 @@ import CrossBack from '../../components/crossBack';
 const Spacer = ({ size }) => <View style={{ height: size }} />;
 
 export default function Menu() {
+    const handleUrl = async (value) => {
+        if (value === "shop") {
+            await WebBrowser.openBrowserAsync('https://shop-lapatatedouceradio.com/');
+        } else if (value === "store") {
+            if (Device.manufacturer === "Apple") {
+                await WebBrowser.openBrowserAsync('https://apps.apple.com/fr/app/la-patate-douce/id1542981247');
+            } else {
+                await WebBrowser.openBrowserAsync('https://play.google.com/store/apps/details?id=la.patate.douce');
+            }
+        } else if ("insta") {
+            await WebBrowser.openBrowserAsync('instagram://media');
+        } else if (value === 'studio') {
+            await WebBrowser.openBrowserAsync('https://pigallestud.io');
+        }
+    };
+
     return (
         <View style={styles.container}>
             <StatusBar style="auto"/>
@@ -47,11 +65,9 @@ export default function Menu() {
                         </Link>
                     </View>
                     <Spacer size={10}/>
-                    <Link href="/pages/menu/shop" asChild style={styles.halfImage}>
-                        <Pressable style={styles.button}>
-                            <Image source={require('../../../assets/img/menu/backgrounds.png')} style={styles.image} resizeMode={"contain"}/>
-                        </Pressable>
-                    </Link>
+                    <Pressable style={styles.button} onPress={() => handleUrl("shop")}>
+                        <Image source={require('../../../assets/img/menu/shop.png')} style={styles.image} resizeMode={"contain"}/>
+                    </Pressable>
                     <Spacer size={10}/>
                     <Link href="/pages/menu/soutenir" asChild style={styles.halfImage}>
                         <Pressable style={styles.button}>
@@ -60,19 +76,19 @@ export default function Menu() {
                     </Link>
                     <Spacer size={10}/>
                     <View style={styles.twoButton}>
-                        <Pressable style={styles.halfImage}>
+                        <Pressable style={styles.halfImage} onPress={() => handleUrl("store")}>
                             <Image source={require('../../../assets/img/menu/rating.png')} style={styles.image} resizeMode={"contain"}/>
                         </Pressable>
-                        <Pressable style={styles.halfImage}>
+                        <Pressable style={styles.halfImage} onPress={() => handleUrl("insta")}>
                             <Image source={require('../../../assets/img/menu/instagram.png')} style={styles.image} resizeMode={"contain"}/>
                         </Pressable>
                     </View>
                     <Spacer size={10}/>
                     <Text style={styles.footer}>Made with 🍠</Text>
-                    <Pressable>
+                    <Pressable onPress={() => handleUrl("studio")}>
                         <Text style={[styles.footer, {textDecorationLine: 'underline'}]}>by Le Studio Pigalle</Text>
                     </Pressable>
-                    <Spacer size={10}/>
+                    <Spacer size={20}/>
                 </View>
             </ScrollView>
         </View>

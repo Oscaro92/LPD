@@ -2,9 +2,9 @@
 import {StatusBar} from 'expo-status-bar';
 import {useEffect, useState} from "react";
 import PagerView from 'react-native-pager-view';
-import {Alert, Image, StyleSheet, View} from 'react-native';
+import {Alert, Image, StyleSheet, View, Text} from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
-import AsyncStorage from '@react-native-async-storage/async-storage';
 // * import components
 import CrossBack from "../../components/crossBack";
 
@@ -29,8 +29,16 @@ export default function Backgrounds(props) {
     };
 
     const getBGIndex = async () => {
-        const value = await AsyncStorage.getItem('bg');
-        setIndexBG(parseInt(value));
+        try{
+            const value = await AsyncStorage.getItem('bg');
+            if (value === null) {
+                setIndexBG(0);
+            } else {
+                setIndexBG(parseInt(value));
+            }
+        } catch (e) {
+            setIndexBG(parseInt(0));
+        }
     };
 
     useEffect( () => {
@@ -70,12 +78,12 @@ const styles = StyleSheet.create({
         width: '75%'
     },
     titleImage: {
-        width: 278,
+        width: '100%',
         height: 50,
         marginBottom: 40
     },
     page: {
         width: '100%',
-        height: '100%',
+        height: '100%'
     }
 });

@@ -94,8 +94,8 @@ export default function App() {
     return (
         <View style={styles.container}>
             <StatusBar style="auto"/>
-            <Lottie resizeMode="contain" source={require('../assets/animation.json')} autoPlay loop style={[styles.lottie, {display: animation}]}/>
-Upda            <ImageBackground source={pathBG} resizeMode="cover" style={styles.bg}/>
+{/*            <Lottie resizeMode="contain" source={require('../assets/animation.json')} autoPlay loop style={[styles.lottie, {display: animation}]}/>*/}
+            <ImageBackground source={pathBG} resizeMode="cover" style={styles.bg}/>
             <View style={styles.topBox}>
                 {animedLogo > 15 ? (
                     <Animated.Image

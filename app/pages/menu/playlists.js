@@ -30,7 +30,7 @@ export default function Playlists() {
                         <Text style={styles.text}>
                             ÉCOUTER
                         </Text>
-                        <Image source={require('../../../assets/img/playlists/icons8-jouer.png')} style={styles.imagePlay}/>
+                        <Image source={require('../../../assets/img/icones/light_play.png')} style={styles.imagePlay}/>
                     </View>
                 </Pressable>
             </View>

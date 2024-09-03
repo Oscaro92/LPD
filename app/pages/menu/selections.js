@@ -1,9 +1,104 @@
 // * import libraries
 import {StatusBar} from 'expo-status-bar';
-import {Image, Pressable, StyleSheet, Text, View} from 'react-native';
+import * as WebBrowser from "expo-web-browser";
+import {Image, Pressable, ScrollView, StyleSheet, Text, View} from 'react-native';
 
 // * import component
 import CrossBack from '../../components/crossBack'
+const Spacer = ({ size }) => <View style={{ height: size }} />;
+const light_play = require('../../../assets/img/icones/light_play.png');
+const Item = ({ item, color, zIndex }) => {
+    const handleUrl = async (value) => {
+        await WebBrowser.openBrowserAsync(value);
+    };
+
+    return (
+        <View style={[styles.item, {backgroundColor: color, zIndex: zIndex}]}>
+            <Image style={styles.image} source={item.image}/>
+            <Spacer size={20}/>
+            <Text style={styles.nameSelection}>
+                {item.name}
+            </Text>
+            <Spacer size={20}/>
+            <Pressable onPress={() => handleUrl(item.url)}>
+                <View style={styles.button}>
+                    <Text style={styles.buttonText}>
+                        ÉCOUTER
+                    </Text>
+                    <Image source={light_play} style={styles.imageLightPlay}/>
+                </View>
+            </Pressable>
+        </View>
+    )
+}
+
+// * data
+const data = [
+    {
+        url: "https://soundcloud.com/lapatatedouce/selection-by-oracle-sisters?in=lapatatedouce/sets/la-patate-douce-selections",
+        image: require("../../../assets/img/selections/selec_oracle.png")
+    },
+    {
+        url: "https://soundcloud.com/lapatatedouce/selection-by-corine?in=lapatatedouce/sets/la-patate-douce-selections",
+        image: require("../../../assets/img/selections/selec_corine.png")
+    },
+    {
+        url: "https://soundcloud.com/lapatatedouce/selection-by-tonique-man?in=lapatatedouce/sets/la-patate-douce-selections",
+        image: require("../../../assets/img/selections/selec_tonique.png")
+    },
+    {
+        url: "https://m.soundcloud.com/lapatatedouce/spooners-selection",
+        image: require("../../../assets/img/selections/selec_spooners.png")
+    },
+    {
+        url: "https://soundcloud.com/lapatatedouce/selection-by-antonin",
+        image: require("../../../assets/img/selections/selec_antonin.png")
+    },
+    {
+        url: "https://soundcloud.com/lapatatedouce/selection-by-bomel",
+        image: require("../../../assets/img/selections/selec_bomel.png")
+    },
+    {
+        url: "https://soundcloud.com/lapatatedouce/daymax",
+        image: require("../../../assets/img/selections/selec_daymax.png")
+    },
+    {
+        url: "https://soundcloud.com/lapatatedouce/selection-by-heritage-listed-1",
+        image: require("../../../assets/img/selections/selec_heritage.png")
+    },
+    {
+        url: "https://soundcloud.com/lapatatedouce/selection-by-lord",
+        image: require("../../../assets/img/selections/selec_lord.png")
+    },
+    {
+        url: "https://soundcloud.com/lapatatedouce/selection-lucien-kimono",
+        image: require("../../../assets/img/selections/selec_lucien.png")
+    },
+    {
+        url: "https://soundcloud.com/lapatatedouce/selection-by-macadam-crocodile",
+        image: require("../../../assets/img/selections/selec_macadam.png")
+    },
+    {
+        url: "https://soundcloud.com/lapatatedouce/selection-by-maxime-nerguisian",
+        image: require("../../../assets/img/selections/selec_maxime.png")
+    },
+    {
+        url: "https://soundcloud.com/lapatatedouce/selection-by-mi-man",
+        image: require("../../../assets/img/selections/selec_mi.png")
+    },
+    {
+        url: "https://soundcloud.com/lapatatedouce/selection-motel-club",
+        image: require("../../../assets/img/selections/selec_motel.png")
+    },
+    {
+        url: "https://soundcloud.com/lapatatedouce/selection-by-sauce-blanche",
+        image: require("../../../assets/img/selections/selec_sauce.png")
+    },
+    {
+        url: "https://soundcloud.com/lapatatedouce/selection-by-palomina",
+        image: require("../../../assets/img/selections/selec_palo.png")
+    }
+]
 
 export default function Selections() {
     return (
@@ -19,111 +114,17 @@ export default function Selections() {
                 </View>
             </View>
 
-            <ScrollView style={{marginTop:-40, zIndex: -1}}>
-                {/* Add map of selection + condition */}
-                <View style={{
-                    backgroundColor: '#F0A519',
-                    alignItems: "center",
-                    justifyContent: 'space-between',
-                    borderBottomLeftRadius: 55,
-                    borderBottomRightRadius: 55,
-
-                }}>
-                    <View style={{
-                        zIndex: 2,
-                        flexDirection: 'column',
-                        alignItems: 'center',
-                        width: '100%',
-                        marginBottom :40,
-                        marginTop:80,
-                        flex:1
-                    }}>
-                        <Image
-                            style={{width: '50%', height: undefined, aspectRatio: 1}}
-                            source={require("./assets/img/selections/selec_oracle.png")}/>
-                        <Spacer size={20}/>
-                        <Text style={{fontFamily:'Baruta', fontSize:21, color:'#481121'}}>
-                            Selection by Oracle sisters
-                        </Text>
-                        <Spacer size={20}/>
-                        <Pressable onPress={() => handlePress3()}>
-                            <View style={{
-                                flexDirection: 'row',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                            }}>
-                                <Text style={{
-                                    fontFamily: 'Futura-Bold',
-                                    fontSize: 17,
-                                    color: '#F5ECC4',
-                                    marginRight: 10,
-                                }}>
-                                    ÉCOUTER
-                                </Text>
-                                <Image
-                                    source={require('./assets/img/playlists/icons8-jouer.png')}
-                                    style={{
-                                        width: 20,
-                                        height: 20,
-                                        zIndex:20
-                                    }}/>
-                            </View>
-                        </Pressable>
+            <ScrollView style={styles.scrollView}>
+                {data.map((item, index) => (
+                    <View style={styles.items}>
+                        {(index % 2) === 0 ? (
+                            <Item item={item} color={"#F0A519"} zIndex={1}/>
+                        ):(
+                            <Item item={item} color={"#520D2F"} zIndex={0}/>
+                        )}
                     </View>
-                </View>
-
-                <View style={{
-                    backgroundColor: '#481121',
-                    alignItems: "center",
-                    justifyContent: 'space-between',
-                    borderBottomLeftRadius: 55,
-                    borderBottomRightRadius: 55,
-                    marginTop:-40,
-                    zIndex: -1
-
-                }}>
-                    <View style={{
-                        zIndex: 1,
-                        flexDirection: 'column',
-                        alignItems: 'center',
-                        width: '100%',
-                        marginBottom :40,
-                        marginTop:80,
-                        flex:1
-                    }}>
-                        <Image
-                            style={{width: '50%', height: undefined, aspectRatio: 1}}
-                            source={require("./assets/img/selections/selec_corine.png")}/>
-                        <Spacer size={20}/>
-                        <Text style={{fontFamily:'Baruta', fontSize:21, color:'#F0A519'}}>
-                            Selection by Corine
-                        </Text>
-                        <Spacer size={20}/>
-                        <Pressable onPress={() => handlePress4()}>
-                            <View style={{
-                                flexDirection: 'row',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                            }}>
-                                <Text style={{
-                                    fontFamily: 'Futura-Bold',
-                                    fontSize: 17,
-                                    color: '#F5ECC4',
-                                    marginRight: 10,
-                                }}>
-                                    ÉCOUTER
-                                </Text>
-                                <Image
-                                    source={require('./assets/img/playlists/icons8-jouer.png')}
-                                    style={{
-                                        width: 20,
-                                        height: 20,
-                                        zIndex:20
-                                    }}/>
-                            </View>
-                        </Pressable>
-                    </View>
-                </View>
+                ))}
+            </ScrollView>
         </View>
     );
 }
@@ -131,19 +132,15 @@ export default function Selections() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#520D2F',
+        backgroundColor: 'pink',
         alignItems: 'center',
         justifyContent: 'center',
     },
     topBox: {
         flexDirection:'column',
         width:'100%',
-        minHeight: '30%',
         position: 'relative',
-        top: 0,
-        left: 0,
-        right: 0,
-        height: '100%',
+        height: '30%',
         backgroundColor: '#520D2F',
         zIndex: 0,
         borderBottomRightRadius:55,
@@ -151,7 +148,7 @@ const styles = StyleSheet.create({
     },
     title: {
         backgroundColor: '#F5ECC4',
-        minHeight: '70%',
+        minHeight: '20%',
         alignItems: 'center',
         justifyContent: 'center',
         borderBottomEndRadius: 55,
@@ -167,20 +164,65 @@ const styles = StyleSheet.create({
         backgroundColor:'#520D2F',
         width:'100%',
         height:'30%',
-        alignItems:'center',
         justifyContent:'center',
+        alignItems:'center',
         borderBottomEndRadius:55,
         borderBottomStartRadius:55,
-        zIndex: 2,
         paddingHorizontal: 11,
         paddingVertical: 11,
-        flexGrow: 1
+        flexGrow: 1,
+        marginTop: -40
     },
     subTitleText: {
         //fontFamily:'Futura',
+        marginTop: 40,
         fontSize:11,
         fontWeight:'bold',
         color:'#F5ECC4',
-        textAlign: 'center',
+        textAlign: 'center'
+    },
+    scrollView: {
+        width: '100%',
+        zIndex: -1
+    },
+    items: {
+        width: '100%'
+    },
+    item: {
+        backgroundColor: '#F0A519',
+        alignItems: "center",
+        justifyContent: 'space-between',
+        borderBottomLeftRadius: 55,
+        borderBottomRightRadius: 55,
+        flexDirection: 'column',
+        flex:1,
+        width: '100%',
+        marginTop: -40
+    },
+    nameSelection: {
+        fontFamily:'Baruta',
+        fontSize:21,
+        color:'#520D2F'
+    },
+    button: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    buttonText: {
+        // fontFamily: 'Futura-Bold',
+        fontSize: 17,
+        color: '#F5ECC4',
+        marginRight: 10,
+    },
+    image: {
+        width: '50%',
+        height: undefined,
+        aspectRatio: 1
+    },
+    imageLightPlay: {
+        width: 20,
+        height: 20,
+        zIndex:20
     }
 });
